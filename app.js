@@ -1,4 +1,6 @@
 
+require('dotenv').config();
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -12,7 +14,7 @@ const usersRouter = require('./routes/users');
 const cors = require('cors');
 const app = express();
 
-mongoose.connect('mongodb+srv://somya:N19VxswG5PCSqI2u@cluster0.katdq.mongodb.net/Cluster0?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true
 });
 

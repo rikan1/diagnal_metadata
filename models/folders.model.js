@@ -12,7 +12,9 @@ var FolderSchema = new mongoose.Schema({
   },
   name:{
     type: String,
-    trim: true
+    required: [true,'name is required'],
+    trim: true,
+    index: true
   }
 },{
   timestamps : true
@@ -29,6 +31,8 @@ mongoose.plugin(schema => {
 function setRunValidators() {
   this.setOptions({ runValidators: true });
 }
+
+FolderSchema.index({'userId':1,'name':1});
 
 var Folder = mongoose.model("folders", FolderSchema);
 

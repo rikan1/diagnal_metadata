@@ -12,7 +12,9 @@ var FileSchema = new mongoose.Schema({
   },
   name:{
     type: String,
-    trim: true
+    required: [true,'name is required'],
+    trim: true,
+    index: true
   },
   content:{
     type: String,
@@ -20,7 +22,8 @@ var FileSchema = new mongoose.Schema({
   },
   folderId:{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'folders'
+    ref: 'folders',
+    index: true
   }
 },{
   timestamps : true
@@ -37,6 +40,9 @@ mongoose.plugin(schema => {
 function setRunValidators() {
   this.setOptions({ runValidators: true });
 }
+
+FileSchema.index({'userId':1,'name':1});
+FileSchema.index({'userId':1,'folderId':1});
 
 var File = mongoose.model("files", FileSchema);
 

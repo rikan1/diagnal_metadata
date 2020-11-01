@@ -39,6 +39,7 @@ There is an api which recieves url as body parameter and gives the metadata info
 {
     "title": "<String>",
     "description": "<String>",
-    "image": "<Url>"
+    "image": "<Url>",
+    "keywords":[]
 }
 ```

@@ -18,15 +18,12 @@ exports.parseUrl = async (req,res)=>{
     const data =  await Cache.findOne({baseUrl});
 
     if(data){
-        if(data.keywords.length){
-            return res.send({keywords:data.keywords});
-        }else{
-            return res.send({
-                title: data.title,
-                description: data.description,
-                image: data.image
-            })
-        }
+      return res.send({
+          title: data.title,
+          description: data.description,
+          image: data.image,
+          keywords: data.keywords
+      })
     }
   
     request(url, async function (error, response, responseHtml) {
@@ -47,19 +44,12 @@ exports.parseUrl = async (req,res)=>{
 
       let savedCache = await cache.save();
 
-      if(savedCache.keywords.length){
-
-        return res.send({keywords:savedCache.keywords});
-
-      }else{
-
-        return res.send({
-            title: savedCache.title,
-            description: savedCache.description,
-            image: savedCache.image
-        });
-        
-      }
+      return res.send({
+          title: savedCache.title,
+          description: savedCache.description,
+          image: savedCache.image,
+          keywords:savedCache.keywords
+      });
   
     });
    

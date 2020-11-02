@@ -2,7 +2,7 @@
 
 To run this project you need to clone it first.
 ```sh
-git clone https://github.com/rikan1/diagnal.git
+git clone https://github.com/rikan1/diagnal_metadata.git
 ```
 Here i am using mongodb database.You can set the mongodb connection url in .env file.
 
